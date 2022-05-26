@@ -1,25 +1,34 @@
-import logo from './logo.svg';
 import './App.css';
-
-function App() {
+import React from 'react'
+import Counter from './Counter'
+import HOCRed from './HOCred';
+import HOCcounter from './HOCcounter';
+class  App extends React.Component {
+  constructor()
+  {
+    super();
+    this.state={
+      count:1
+    }
+  }
+ render()
+ {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
+     <div>
+     <h1>HOC </h1>
+      <HOCRed cmp={HOCcounter} />
+     </div>
+     <div>
+     <Counter count={this.state.count} />
+      <button 
+      onClick={()=>{this.setState({count:this.state.count+1})}}> Update Count
+      </button>
+     </div>
     </div>
   );
+ }
 }
 
 export default App;
